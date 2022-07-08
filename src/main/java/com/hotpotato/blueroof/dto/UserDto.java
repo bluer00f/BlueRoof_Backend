@@ -62,7 +62,6 @@ public class UserDto {
                 .gender(gender)
                 .phone(phone)
                 .address(address)
-                .marriage(marriage)
                 .soldier(soldier)
                 .appointmentDate(appointmentDate)
                 .authority(Authority.ROLE_USER)

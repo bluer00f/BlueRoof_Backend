@@ -22,19 +22,23 @@ public class Parcel {
 
     // 공고 번호
     @Column(name = "parcel_number", nullable = false)
-    private int parcel_number;
+    private int parcelNumber;
 
     // 공고 년월
     @Column(name = "parcel_date", nullable = false)
-    private int parcel_date;
+    private int parcelDate;
 
     // 분양 지역
     @Column(name = "parcel_region", nullable = false)
-    private String parcel_region;
+    private String parcelRegion;
 
     // 분양 상품명
     @Column(name = "parcel_name", nullable = false)
-    private String parcel_name;
+    private String parcelName;
+
+    // 분양 구분
+    @Column(name = "parcel_type", nullable = false)
+    private String parcelType;
 
     // 주택 구분
     @Column(name = "house_type", nullable = false)
@@ -48,7 +52,7 @@ public class Parcel {
 
     // 시공사
     @Column(name = "construction_name", nullable = false)
-    private String construction_name;
+    private String constructionName;
 
     // 입주자 모집 공고일
     @Column(name = "recruit_date", nullable = false)

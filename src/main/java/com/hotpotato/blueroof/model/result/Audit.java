@@ -16,6 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 // 회원 적격/부적격 판단 결과
 public class Audit {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "audit_id")
@@ -35,7 +36,7 @@ public class Audit {
 
     // 부적격 여부
     @Column(name = "ineligible_fl", nullable = false)
-    private int ineligible;
+    private String ineligible;
 
     // 부적격 사유
     @Column(name = "ineligible_reason", length = 50)
