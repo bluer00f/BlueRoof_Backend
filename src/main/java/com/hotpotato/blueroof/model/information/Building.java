@@ -31,6 +31,10 @@ public class Building extends Timestamped {
     @Column(name = "spouse_fl", nullable = false)
     private int spouse;
 
+    // 거주형 & 비거주형
+    @Column(name = "house_fl", nullable = false)
+    private int house;
+
     // 건물 유형
     @Column(name = "building_type", nullable = false)
     private String buildingType;
@@ -39,16 +43,16 @@ public class Building extends Timestamped {
     @Column(name = "building_address", nullable = false)
     private String buildingAddress;
 
-    // 건물 면적
+    // 건물 면적 (제곱 미터)
     @Column(name = "building_area", nullable = false)
     private double buildingArea;
 
-    // 건물 금액
+    // 건물 금액 (억)
     @Column(name = "building_price", nullable = false)
     private int buildingPrice;
 
-    // 무주택 시작일
-    @Column(name = "house_end_date")
-    private LocalDate houseEndDate;
+    // 건물 기준
+    @Column(name = "building_date")
+    private LocalDate buildingDate;
 
 }
