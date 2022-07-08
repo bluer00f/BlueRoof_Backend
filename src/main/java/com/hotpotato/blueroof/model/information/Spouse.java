@@ -25,6 +25,14 @@ public class Spouse {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    // 이름
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    // 외국인 여부
+    @Column(name = "foreign_fl", nullable = false)
+    private int foreign;
+
     // 생년월일
     @Column(name = "birthday", nullable = false)
     private LocalDate birthday;

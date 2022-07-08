@@ -128,4 +128,11 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("유저 정보가 없습니다."));
     }
 
+    // 혼인 여부 조회
+    @Transactional(readOnly = true)
+    public boolean getMarriage(User user) {
+        int marriage = user.getMarriage();
+        return marriage == 0 ? true : false;
+    }
+
 }

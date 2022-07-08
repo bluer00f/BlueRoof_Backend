@@ -1,9 +1,6 @@
 package com.hotpotato.blueroof.controller;
 
-import com.hotpotato.blueroof.dto.LoginDto;
-import com.hotpotato.blueroof.dto.TokenDto;
-import com.hotpotato.blueroof.dto.TokenRequestDto;
-import com.hotpotato.blueroof.dto.UserDto;
+import com.hotpotato.blueroof.dto.*;
 import com.hotpotato.blueroof.model.user.User;
 import com.hotpotato.blueroof.service.UserService;
 import io.swagger.annotations.Api;
@@ -70,5 +67,13 @@ public class UserController {
     public ResponseEntity<Object> update(@Valid @RequestBody UserDto userDto) {
         User user = userService.getMyInfo();
         return ResponseEntity.ok(userService.update(user, userDto));
+    }
+
+    // 혼인 여부 조회
+    @ApiOperation(value = "혼인 여부 조회")
+    @GetMapping("/marriage")
+    public ResponseEntity<? extends ResponseDto> getMarriage() {
+        User user = userService.getMyInfo();
+        return ResponseEntity.ok().body(new CommonResponseDto<>(userService.getMarriage(user)));
     }
 }
