@@ -25,7 +25,7 @@ public class SupplyPrice {
 
     // 주택형
     @Column(name = "house_area", nullable = false)
-    private String house_area;
+    private String houseArea;
 
     // 주택 관리 번호
     @Column(name = "house_number", nullable = false)

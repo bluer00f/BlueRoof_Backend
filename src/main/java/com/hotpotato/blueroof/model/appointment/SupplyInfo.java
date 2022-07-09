@@ -25,7 +25,7 @@ public class SupplyInfo {
 
     // 주택 구분
     @Column(name = "house_type", nullable = false)
-    private int subDateType;
+    private int houseType;
 
     // 주택 공급 면적
     @Column(name = "supply_area", nullable = false)
