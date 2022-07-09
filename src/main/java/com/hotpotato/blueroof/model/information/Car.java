@@ -38,7 +38,7 @@ public class Car extends Timestamped {
     @Column(name = "car_year", nullable = false)
     private int carYear;
 
-    // 건물 금액
+    // 차량 금액
     @Column(name = "car_price", nullable = false)
     private int carPrice;
 
