@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class RefreshToken {
 
     @Id
-    @Column(name = "rt_key")
+    @Column(name = "rt_key", length = 255)
     private String key;
 
     @Column(name = "rt_value")

@@ -1,6 +1,5 @@
 package com.hotpotato.blueroof.model.information;
 
-import com.hotpotato.blueroof.model.Timestamped;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 // 청약 통장 정보
-public class Account extends Timestamped {
+public class Account {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -29,7 +28,7 @@ public class Account extends Timestamped {
 
     // 통장 종류
     @Column(name = "account_type", nullable = false)
-    private String buildingType;
+    private String accountType;
 
     // 가입 일자
     @Column(name = "account_date")
