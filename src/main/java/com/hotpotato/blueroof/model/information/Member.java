@@ -1,5 +1,7 @@
 package com.hotpotato.blueroof.model.information;
 
+import com.hotpotato.blueroof.model.type.Flag;
+import com.hotpotato.blueroof.model.type.Relation;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,23 +28,23 @@ public class Member {
     private User user;
 
     // 생년월일
-    @Column(name = "birthday", nullable = false)
-    private LocalDate birthday;
+    @Column(name = "member_birthday", nullable = false)
+    private LocalDate member_birthday;
 
     // 세대원 관계
     @Column(name = "member_relation", nullable = false)
-    private int relation;
+    private Relation relation;
 
     // 세대주 여부
     @Column(name = "owner_fl", nullable = false)
-    private int owner;
+    private Flag owner;
 
     // 연간 소득
     @Column(name = "year_income")
-    private int yearIncome;
+    private double yearIncome;
 
     // 무주택 여부
     @Column(name = "house_fl")
-    private int house;
+    private Flag house;
 
 }

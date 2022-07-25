@@ -2,6 +2,7 @@ package com.hotpotato.blueroof.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hotpotato.blueroof.model.Timestamped;
+import com.hotpotato.blueroof.model.type.Flag;
 import lombok.*;
 
 import javax.persistence.*;
@@ -45,13 +46,20 @@ public class User extends Timestamped {
     @Column(name = "address", nullable = false)
     private String address;
 
+    @Column(name = "zipcode", nullable = false)
+    private String zipcode;
+
     // 혼인여부
     @Column(name = "marriage_fl", nullable = false)
-    private int marriage;
+    private Flag marriage;
 
-    // 직업군인여부
+    // 세대주 여부
+    @Column(name = "owner_fl", nullable = false)
+    private Flag owner;
+
+    // 직업 군인 여부
     @Column(name = "soldier_fl", nullable = false)
-    private int soldier;
+    private Flag soldier;
 
     // 직업군인일 경우, 임관일
     @Column(name = "appointment_date")
