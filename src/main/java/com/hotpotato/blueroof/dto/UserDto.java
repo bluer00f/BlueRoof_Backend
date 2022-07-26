@@ -1,6 +1,7 @@
 package com.hotpotato.blueroof.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.hotpotato.blueroof.model.type.Flag;
 import com.hotpotato.blueroof.model.user.Authority;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.*;
@@ -45,10 +46,13 @@ public class UserDto {
     private String address;
 
     @NotNull
-    private int marriage;
+    private Flag marriage;
 
     @NotNull
-    private int soldier;
+    private Flag owner;
+
+    @NotNull
+    private Flag soldier;
 
     private LocalDate appointmentDate;
 
@@ -62,6 +66,7 @@ public class UserDto {
                 .gender(gender)
                 .phone(phone)
                 .address(address)
+                .owner(owner)
                 .soldier(soldier)
                 .appointmentDate(appointmentDate)
                 .authority(Authority.ROLE_USER)

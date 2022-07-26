@@ -1,5 +1,6 @@
 package com.hotpotato.blueroof.model.information;
 
+import com.hotpotato.blueroof.model.type.BankBookType;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,11 +16,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 // 청약 통장 정보
-public class Account {
+public class BankBook {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "account_id")
+    @Column(name = "bank_book_id")
     private Long id;
 
     @ManyToOne
@@ -27,11 +28,11 @@ public class Account {
     private User user;
 
     // 통장 종류
-    @Column(name = "account_type", nullable = false)
-    private String accountType;
+    @Column(name = "bank_book_type", nullable = false)
+    private BankBookType bankBookType;
 
     // 가입 일자
-    @Column(name = "account_date")
+    @Column(name = "bank_book_date")
     private LocalDate accountDate;
 
     // 미성년자 납입 횟수

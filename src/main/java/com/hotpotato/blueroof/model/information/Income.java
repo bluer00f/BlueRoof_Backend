@@ -26,12 +26,8 @@ public class Income extends Timestamped {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // 배우자 여부
-    @Column(name = "spouse_fl", nullable = false)
-    private int spouse;
-
     // 월 평균 소득
-    @Column(name = "income_price")
-    private int incomePrice;
+    @Column(name = "income_month_price")
+    private int incomeMonthPrice;
 
 }

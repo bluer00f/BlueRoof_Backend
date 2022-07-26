@@ -26,6 +26,10 @@ public class Subscription extends Timestamped {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    // 무주택 시작일
+    @Column(name = "houseless_date")
+    private LocalDate houseEndDate;
+
     // 특별공급순위
     @Column(name = "special_rank", nullable = false)
     private int specialRank;

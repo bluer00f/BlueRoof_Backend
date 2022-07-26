@@ -27,9 +27,9 @@ public class Land extends Timestamped {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // 배우자 여부
-    @Column(name = "spouse_fl", nullable = false)
-    private int spouse;
+    // 토지 우편번호
+    @Column(name = "land_zipcode", nullable = false)
+    private String landZipcode;
 
     // 토지 주소
     @Column(name = "land_address", nullable = false)
