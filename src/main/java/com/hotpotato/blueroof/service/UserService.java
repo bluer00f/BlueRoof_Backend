@@ -6,6 +6,7 @@ import com.hotpotato.blueroof.dto.TokenDto;
 import com.hotpotato.blueroof.dto.TokenRequestDto;
 import com.hotpotato.blueroof.dto.UserDto;
 import com.hotpotato.blueroof.jwt.TokenProvider;
+import com.hotpotato.blueroof.model.type.Flag;
 import com.hotpotato.blueroof.model.user.RefreshToken;
 import com.hotpotato.blueroof.model.user.User;
 import com.hotpotato.blueroof.repository.RefreshTokenRepository;
@@ -115,6 +116,7 @@ public class UserService {
         user.setPhone(userDto.getPhone());
         user.setAddress(userDto.getAddress());
         user.setMarriage(userDto.getMarriage());
+        user.setOwner(userDto.getOwner());
         user.setSoldier(userDto.getSoldier());
         user.setAppointmentDate(userDto.getAppointmentDate());
 
@@ -131,8 +133,8 @@ public class UserService {
     // 혼인 여부 조회
     @Transactional(readOnly = true)
     public boolean getMarriage(User user) {
-        int marriage = user.getMarriage();
-        return marriage == 0 ? true : false;
+        Flag marriage = user.getMarriage();
+        return marriage.equals(Flag.YES) ? true : false;
     }
 
 }

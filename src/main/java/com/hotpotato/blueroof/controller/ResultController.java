@@ -40,7 +40,10 @@ public class ResultController {
         // 적격 & 부적격 판단
         Audit audit = resultService.audit(user, resultDto, point.getId());
 
-        return ResponseEntity.ok().body(new CommonResponseDto<>(new ResultResponseDto(audit.getIneligible(), audit.getIneligibleReason(), point.getSubPoint())));
+        ResultResponseDto resultResponseDto = new ResultResponseDto(resultDto.getSupplyType1(), resultDto.getSupplyType2(),
+                resultDto.getHouseType(), audit.getIneligible().toString(), audit.getIneligibleReason(), point.getSubPoint());
+
+        return ResponseEntity.ok().body(new CommonResponseDto<>(resultResponseDto));
     }
 
 }

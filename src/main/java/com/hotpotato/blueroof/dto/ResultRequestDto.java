@@ -18,9 +18,9 @@ public class ResultRequestDto {
     private String supplyType2;
 
     @NotNull
-    private Long parcelId;
+    private Long AptInfoId;
 
     @NotNull
-    private String houseArea;
+    private String houseType;
 
 }

@@ -26,10 +26,6 @@ public class Car extends Timestamped {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // 배우자 여부
-    @Column(name = "spouse_fl", nullable = false)
-    private int spouse;
-
     // 차량 기종
     @Column(name = "car_type", nullable = false)
     private String carType;

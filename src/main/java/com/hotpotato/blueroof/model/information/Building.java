@@ -1,6 +1,8 @@
 package com.hotpotato.blueroof.model.information;
 
 import com.hotpotato.blueroof.model.Timestamped;
+import com.hotpotato.blueroof.model.type.BuildingType;
+import com.hotpotato.blueroof.model.type.Flag;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,17 +29,13 @@ public class Building extends Timestamped {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // 배우자 여부
-    @Column(name = "spouse_fl", nullable = false)
-    private int spouse;
-
-    // 거주형 & 비거주형
-    @Column(name = "house_fl", nullable = false)
-    private int house;
-
     // 건물 유형
     @Column(name = "building_type", nullable = false)
-    private String buildingType;
+    private BuildingType buildingType;
+
+    // 건물 우편번호
+    @Column(name = "building_zipcode", nullable = false)
+    private String buildingZipcode;
 
     // 건물 주소
     @Column(name = "building_address", nullable = false)
@@ -49,9 +47,9 @@ public class Building extends Timestamped {
 
     // 건물 금액 (억)
     @Column(name = "building_price", nullable = false)
-    private int buildingPrice;
+    private double buildingPrice;
 
-    // 건물 기준
+    // 건물 취득일
     @Column(name = "building_date")
     private LocalDate buildingDate;
 
