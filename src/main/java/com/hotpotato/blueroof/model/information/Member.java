@@ -29,7 +29,7 @@ public class Member {
 
     // 생년월일
     @Column(name = "member_birthday", nullable = false)
-    private LocalDate member_birthday;
+    private LocalDate memberBirthday;
 
     // 세대원 관계
     @Column(name = "member_relation", nullable = false)

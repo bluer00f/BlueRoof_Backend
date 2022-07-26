@@ -13,23 +13,19 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 // 공급 금액
-public class SupplyPrice {
+public class AptInfoSupplyPrice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "supply_price_id")
+    @Column(name = "apt_info_supply_price_id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "parcel_id", nullable = false)
-    private Parcel parcel;
+    @JoinColumn(name = "apt_info_id", nullable = false)
+    private AptInfo aptInfo;
 
     // 주택형
-    @Column(name = "house_area", nullable = false)
-    private String houseArea;
-
-    // 주택 관리 번호
-    @Column(name = "house_number", nullable = false)
-    private int houseNumber;
+    @Column(name = "supply_type", nullable = false)
+    private String supplyType;
 
     // 공급 금액
     @Column(name = "supply_price", nullable = false)

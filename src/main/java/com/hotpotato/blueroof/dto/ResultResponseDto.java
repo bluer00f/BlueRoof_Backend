@@ -5,13 +5,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResultResponseDto {
+
+    private String supplyType1;
+
+    private String supplyType2;
+
+    private String houseType;
 
     private String audit;
 

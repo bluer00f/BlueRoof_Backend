@@ -1,6 +1,7 @@
 package com.hotpotato.blueroof.model.result;
 
-import com.hotpotato.blueroof.model.appointment.Parcel;
+import com.hotpotato.blueroof.model.appointment.AptInfo;
+import com.hotpotato.blueroof.model.type.Flag;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,19 +28,31 @@ public class Audit {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "parcel_id", nullable = false)
-    private Parcel parcel;
+    @JoinColumn(name = "apt_info_id", nullable = false)
+    private AptInfo apt_info_id;
 
     @OneToOne
     @JoinColumn(name = "point_id", nullable = false)
     private Point point;
 
+    // 공급 유형1
+    @Column(name = "supply_type1", nullable = false)
+    private String supplyType1;
+
+    // 공급 유형2
+    @Column(name = "supply_type2", nullable = false)
+    private String supplyType2;
+
+    // 주택형
+    @Column(name = "houseType", nullable = false)
+    private String houseType;
+
     // 부적격 여부
     @Column(name = "ineligible_fl", nullable = false)
-    private String ineligible;
+    private Flag ineligible;
 
     // 부적격 사유
-    @Column(name = "ineligible_reason", length = 50)
+    @Column(name = "ineligible_reason")
     private String ineligibleReason;
 
 }
