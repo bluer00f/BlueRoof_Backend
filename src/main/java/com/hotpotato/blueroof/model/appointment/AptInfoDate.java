@@ -18,7 +18,7 @@ public class AptInfoDate {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "apt_info_id")
+    @Column(name = "apt_info_date_id")
     private Long id;
 
     @ManyToOne
