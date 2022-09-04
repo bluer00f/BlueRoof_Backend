@@ -42,16 +42,14 @@ public class UserDto {
 
     private String phone;
 
-    @NotNull
     private String address;
 
-    @NotNull
+    private String zipcode;
+
     private Flag marriage;
 
-    @NotNull
     private Flag owner;
 
-    @NotNull
     private Flag soldier;
 
     private LocalDate appointmentDate;
@@ -66,6 +64,8 @@ public class UserDto {
                 .gender(gender)
                 .phone(phone)
                 .address(address)
+                .zipcode(zipcode)
+                .marriage(marriage)
                 .owner(owner)
                 .soldier(soldier)
                 .appointmentDate(appointmentDate)

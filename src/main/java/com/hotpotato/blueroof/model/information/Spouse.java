@@ -32,6 +32,7 @@ public class Spouse {
 
     // 외국인 여부
     @Column(name = "foreign_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag foreign;
 
     // 생년월일
@@ -44,6 +45,7 @@ public class Spouse {
 
     // 청약 당첨 이력
     @Column(name = "win_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag win;
 
     // 당첨일자
@@ -52,6 +54,7 @@ public class Spouse {
 
     // 분리 세대 여부
     @Column(name = "separate_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag separate;
 
     // 분리 세대 아닌 경우, 주소
@@ -60,10 +63,12 @@ public class Spouse {
 
     // 분리 세대 아닌 경우, 세대주 여부
     @Column(name = "owner_fl")
+    @Enumerated(EnumType.STRING)
     private Flag owner;
 
     // 분리 세대 아닌 경우, 분리 조건 여부
     @Column(name = "condition_fl")
+    @Enumerated(EnumType.STRING)
     private Flag condition;
 
 }

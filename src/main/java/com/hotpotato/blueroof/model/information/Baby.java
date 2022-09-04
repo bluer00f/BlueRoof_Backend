@@ -29,6 +29,7 @@ public class Baby extends Timestamped {
 
     // 임신 여부
     @Column(name = "pregnant_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag pregnant;
 
     // 태아 수

@@ -31,12 +31,23 @@ public class Member {
     @Column(name = "member_birthday", nullable = false)
     private LocalDate memberBirthday;
 
+    // 청약 당첨 이력
+    @Column(name = "win_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Flag win;
+
+    // 당첨일자
+    @Column(name = "win_date")
+    private LocalDate winDate;
+
     // 세대원 관계
     @Column(name = "member_relation", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Relation relation;
 
     // 세대주 여부
     @Column(name = "owner_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag owner;
 
     // 연간 소득
@@ -45,6 +56,7 @@ public class Member {
 
     // 무주택 여부
     @Column(name = "house_fl")
+    @Enumerated(EnumType.STRING)
     private Flag house;
 
 }
