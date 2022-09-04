@@ -29,11 +29,12 @@ public class BankBook {
 
     // 통장 종류
     @Column(name = "bank_book_type", nullable = false)
+    @Enumerated(EnumType.STRING)
     private BankBookType bankBookType;
 
     // 가입 일자
     @Column(name = "bank_book_date")
-    private LocalDate accountDate;
+    private LocalDate bankBookDate;
 
     // 미성년자 납입 횟수
     @Column(name = "teen_count")

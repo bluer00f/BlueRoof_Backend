@@ -51,14 +51,17 @@ public class User extends Timestamped {
 
     // 혼인여부
     @Column(name = "marriage_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag marriage;
 
     // 세대주 여부
     @Column(name = "owner_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag owner;
 
     // 직업 군인 여부
     @Column(name = "soldier_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag soldier;
 
     // 직업군인일 경우, 임관일

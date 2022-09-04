@@ -103,30 +103,36 @@ public class AptInfo {
 
     // 투기 과열 지구
     @Column(name = "speclt_rdn_earth_at", nullable = false, length = 1)
+    @Enumerated(EnumType.STRING)
     private Flag specltRdnEarthAt;
 
     // 조정 대상 지역
     @Column(name = "mdat_trget_area_secd", nullable = false, length = 1)
-    private Flag mdatTrgetAreaSecd;
+    private String mdatTrgetAreaSecd;
 
     // 분양 가상 한제
     @Column(name = "parcprc_uls_at", nullable = false, length = 1)
+    @Enumerated(EnumType.STRING)
     private Flag parcprcUlsAt;
 
     // 정비 사업
     @Column(name = "imprmn_bsns_at", nullable = false, length = 1)
+    @Enumerated(EnumType.STRING)
     private Flag imprmnBsnsAt;
 
     // 공공 주택 지구
     @Column(name = "public_house_earth_at", nullable = false, length = 1)
+    @Enumerated(EnumType.STRING)
     private Flag publicHouseEarthAt;
 
     // 대규모 택지 개발 지구
     @Column(name = "lrscl_bldlnd_at", nullable = false, length = 1)
+    @Enumerated(EnumType.STRING)
     private Flag lrsclBldlndAt;
 
     // 수도권 내 민영 공공 주택 지구
     @Column(name = "npln_prvopr_public_house_at", nullable = false, length = 1)
+    @Enumerated(EnumType.STRING)
     private Flag nplnPrvoprPublicHouseAt;
 
 }

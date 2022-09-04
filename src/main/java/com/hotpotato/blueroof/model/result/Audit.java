@@ -49,6 +49,7 @@ public class Audit {
 
     // 부적격 여부
     @Column(name = "ineligible_fl", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Flag ineligible;
 
     // 부적격 사유
