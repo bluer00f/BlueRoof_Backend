@@ -33,6 +33,10 @@ public class Building extends Timestamped {
     @Column(name = "building_type", nullable = false)
     private BuildingType buildingType;
 
+    // 주거용 건물 여부 (0이면 주거용)
+    @Column(name = "house")
+    private int house;
+
     // 건물 우편번호
     @Column(name = "building_zipcode", nullable = false)
     private String buildingZipcode;

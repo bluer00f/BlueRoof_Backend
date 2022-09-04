@@ -115,6 +115,7 @@ public class UserService {
         user.setUsername(userDto.getUsername());
         user.setPhone(userDto.getPhone());
         user.setAddress(userDto.getAddress());
+        user.setZipcode(userDto.getZipcode());
         user.setMarriage(userDto.getMarriage());
         user.setOwner(userDto.getOwner());
         user.setSoldier(userDto.getSoldier());
@@ -134,7 +135,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public boolean getMarriage(User user) {
         Flag marriage = user.getMarriage();
-        return marriage.equals(Flag.YES) ? true : false;
+        return marriage.equals(Flag.Y) ? true : false;
     }
 
 }
