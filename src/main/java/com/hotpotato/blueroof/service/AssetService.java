@@ -29,9 +29,9 @@ public class AssetService {
 
         // 무주택 시작일 저장
         LocalDate houseEndDate = assetDto.getHouseEndDate();
-        if(houseEndDate != null) {
+        if (houseEndDate != null) {
             Subscription subscription = subscriptionRepository.findByUserId(user.getId());
-            if(!houseEndDate.equals(subscription.getHouseEndDate())) {
+            if (!houseEndDate.equals(subscription.getHouseEndDate())) {
                 subscription.setHouseEndDate(assetDto.getHouseEndDate());
                 subscriptionRepository.save(subscription);
             }
@@ -49,7 +49,7 @@ public class AssetService {
         carRepository.deleteAllByUserId(user.getId());
 
         // 소득 정보 저장
-        if(income == null) {
+        if (income == null) {
 
             // 소득 정보 저장
             income = Income.builder()
@@ -70,7 +70,7 @@ public class AssetService {
         }
 
         // 건물 정보 저장/수정
-        if(assetDto.getBuildingFlag().equals(Flag.Y)) {
+        if (assetDto.getBuildingFlag().equals(Flag.Y)) {
             for (BuildingDto buildingDto : assetDto.getBuilding()) {
 
                 // 주거용 건물 여부
@@ -94,7 +94,7 @@ public class AssetService {
         }
 
         // 토지 정보 저장/수정
-        if(assetDto.getLandFlag().equals(Flag.Y)) {
+        if (assetDto.getLandFlag().equals(Flag.Y)) {
             for (LandDto landDto : assetDto.getLand()) {
                 Land land = Land.builder()
                         .user(user)
@@ -109,7 +109,7 @@ public class AssetService {
         }
 
         // 자동차 정보 저장/수정
-        if(assetDto.getCarFlag().equals(Flag.Y)) {
+        if (assetDto.getCarFlag().equals(Flag.Y)) {
             for (CarDto carDto : assetDto.getCar()) {
                 Car car = Car.builder()
                         .user(user)
@@ -132,21 +132,21 @@ public class AssetService {
         // 무주택 시작일
         Subscription subscription = subscriptionRepository.findByUserId(user.getId());
         AssetDto assetDto = AssetDto.builder().buildingFlag(Flag.N).landFlag(Flag.N).carFlag(Flag.N).build();
-        if(subscription != null && subscription.getHouseEndDate() != null) {
+        if (subscription != null && subscription.getHouseEndDate() != null) {
             assetDto.setHouseEndDate(subscription.getHouseEndDate());
         }
 
         // 소득
         Income income = incomeRepository.findByUserId(user.getId());
-        if(income != null) assetDto.setIncomeMonthPrice(income.getIncomeMonthPrice());
+        if (income != null) assetDto.setIncomeMonthPrice(income.getIncomeMonthPrice());
         else assetDto.setIncomeMonthPrice(-1);
 
         // 건물
         List<Building> buildingList = buildingRepository.findAllByUserId(user.getId());
-        if(!buildingList.isEmpty()) {
+        if (!buildingList.isEmpty()) {
             assetDto.setBuildingFlag(Flag.Y);
             List<BuildingDto> buildingDtoList = new ArrayList<>();
-            for(Building building : buildingList) {
+            for (Building building : buildingList) {
                 BuildingDto buildingDto = BuildingDto.builder()
                         .buildingType(building.getBuildingType())
                         .buildingZipcode(building.getBuildingZipcode())
@@ -161,10 +161,10 @@ public class AssetService {
 
         // 토지
         List<Land> landList = landRepository.findAllByUserId(user.getId());
-        if(!landList.isEmpty()) {
+        if (!landList.isEmpty()) {
             assetDto.setLandFlag(Flag.Y);
             List<LandDto> landDtoList = new ArrayList<>();
-            for(Land land : landList) {
+            for (Land land : landList) {
                 LandDto landDto = LandDto.builder()
                         .landType(land.getLandType())
                         .landZipcode(land.getLandZipcode())
@@ -178,10 +178,10 @@ public class AssetService {
 
         // 자동차
         List<Car> carList = carRepository.findAllByUserId(user.getId());
-        if(!carList.isEmpty()) {
+        if (!carList.isEmpty()) {
             assetDto.setCarFlag(Flag.Y);
             List<CarDto> carDtoList = new ArrayList<>();
-            for(Car car : carList) {
+            for (Car car : carList) {
                 CarDto carDto = CarDto.builder()
                         .carType(car.getCarType())
                         .carPrice(car.getCarPrice())

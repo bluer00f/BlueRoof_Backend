@@ -89,7 +89,7 @@ public class MemberService {
 
         // 태아 정보 조회
         Baby baby = babyRepository.findByUserId(user.getId());
-        if(baby != null) {
+        if (baby != null) {
             allMemberDto.setPregnantFlag(baby.getPregnant());
             if (baby.getPregnant().equals(Flag.Y)) {
                 allMemberDto.setBabyCount(baby.getBabyCount());

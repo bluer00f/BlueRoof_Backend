@@ -23,19 +23,19 @@ public class SpouseService {
     public SpouseDto createSpouse(User user, SpouseDto spouseDto) {
 
         // 회원 혼인 여부 수정
-        if(!user.getMarriage().equals(spouseDto.getMarriageFlag())) {
+        if (!user.getMarriage().equals(spouseDto.getMarriageFlag())) {
             user.setMarriage(spouseDto.getMarriageFlag());
             userRepository.save(user);
         }
 
         // 배우자 정보 삭제인 경우
-        if(spouseDto.getMarriageFlag().equals(Flag.N)) spouseRepository.deleteByUserId(user.getId());
+        if (spouseDto.getMarriageFlag().equals(Flag.N)) spouseRepository.deleteByUserId(user.getId());
 
-        // 배우자 정보 저장/수정
+            // 배우자 정보 저장/수정
         else {
             Spouse spouse = spouseRepository.findByUserId(user.getId());
             // 배우자 정보 수정인 경우
-            if(spouse != null) {
+            if (spouse != null) {
                 spouse.setSpouseName(spouseDto.getSpouseName());
                 spouse.setForeign(spouseDto.getForeignFlag());
                 spouse.setSpouseBirthday(spouseDto.getSpouseBirthday());
@@ -76,10 +76,10 @@ public class SpouseService {
         // 혼인 여부 조회
         Flag marriage = user.getMarriage();
         SpouseDto spouseDto = SpouseDto.builder().spouseIncome(-1).marriageFlag(marriage).build();
-        if(marriage.equals(Flag.Y)) {
+        if (marriage.equals(Flag.Y)) {
             // 배우자 정보 조회
             Spouse spouse = spouseRepository.findByUserId(user.getId());
-            if(spouse != null) {
+            if (spouse != null) {
                 spouseDto.setSpouseName(spouse.getSpouseName());
                 spouseDto.setForeignFlag(spouse.getForeign());
                 spouseDto.setSpouseBirthday(spouse.getSpouseBirthday());
