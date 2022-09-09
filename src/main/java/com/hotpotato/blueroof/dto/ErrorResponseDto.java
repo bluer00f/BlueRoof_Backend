@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ErrorResponseDto extends ResponseDto{
+public class ErrorResponseDto extends ResponseDto {
 
     private String errorMessage;
     private String errorCode;
@@ -14,6 +14,7 @@ public class ErrorResponseDto extends ResponseDto{
         this.errorMessage = errorMessage;
         this.errorCode = "404";
     }
+
     public ErrorResponseDto(String errorMessage, String errorCode) {
         this.errorMessage = errorMessage;
         this.errorCode = errorCode;

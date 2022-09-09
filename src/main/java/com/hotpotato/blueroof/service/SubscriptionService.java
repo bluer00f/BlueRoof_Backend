@@ -33,7 +33,7 @@ public class SubscriptionService {
         bankBookRepository.deleteAllByUserId(user.getId());
 
         // 청약 정보 저장
-        if(subscription == null) {
+        if (subscription == null) {
 
             // 청약 정보 저장
             subscription = Subscription.builder()
@@ -90,7 +90,7 @@ public class SubscriptionService {
         SubscriptionDto subscriptionDto = SubscriptionDto.builder().specialRank(-1).generalRank(-1).build();
         // 청약 정보 조회
         Subscription subscription = subscriptionRepository.findByUserId(user.getId());
-        if(subscription != null) {
+        if (subscription != null) {
             subscriptionDto.setSpecialRank(subscription.getSpecialRank());
             subscriptionDto.setGeneralRank(subscription.getGeneralRank());
             subscriptionDto.setWinFlag(subscription.getWin());
@@ -104,7 +104,7 @@ public class SubscriptionService {
         List<BankBook> bankBookList = bankBookRepository.findAllByUserId(user.getId());
         List<BankBookDto> bankBookDtoList = new ArrayList<>();
 
-        for(BankBook bankBook : bankBookList) {
+        for (BankBook bankBook : bankBookList) {
             BankBookDto bankBookDto = BankBookDto.builder()
                     .bankBookType(bankBook.getBankBookType())
                     .bankBookDate(bankBook.getBankBookDate())
@@ -118,7 +118,7 @@ public class SubscriptionService {
             bankBookDtoList.add(bankBookDto);
         }
 
-        if(!bankBookDtoList.isEmpty()) {
+        if (!bankBookDtoList.isEmpty()) {
             subscriptionDto.setBankBookList(bankBookDtoList);
         }
 
