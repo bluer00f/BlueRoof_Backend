@@ -12,4 +12,6 @@ public interface BankBookRepository extends JpaRepository<BankBook, Long> {
 
 
     List<BankBook> findAllByUserId(Long id);
+
+    void deleteAllByUserId(Long id);
 }

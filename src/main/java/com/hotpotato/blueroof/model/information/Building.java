@@ -31,6 +31,7 @@ public class Building extends Timestamped {
 
     // 건물 유형
     @Column(name = "building_type", nullable = false)
+    @Enumerated(EnumType.STRING)
     private BuildingType buildingType;
 
     // 주거용 건물 여부 (0이면 주거용)
@@ -49,9 +50,9 @@ public class Building extends Timestamped {
     @Column(name = "building_area", nullable = false)
     private double buildingArea;
 
-    // 건물 금액 (억)
+    // 건물 금액
     @Column(name = "building_price", nullable = false)
-    private double buildingPrice;
+    private int buildingPrice;
 
     // 건물 취득일
     @Column(name = "building_date")

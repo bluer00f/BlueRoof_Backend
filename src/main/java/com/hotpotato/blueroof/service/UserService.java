@@ -94,6 +94,14 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    // 회원탈퇴
+    @Transactional
+    public void withdraw(User user) {
+
+        userRepository.delete(user);
+
+    }
+
     // 유저 로그인 아이디 중복 체크
     @Transactional(readOnly = true)
     public boolean checkIdDuplication(String loginId) {
@@ -116,9 +124,8 @@ public class UserService {
         user.setPhone(userDto.getPhone());
         user.setAddress(userDto.getAddress());
         user.setZipcode(userDto.getZipcode());
-        user.setMarriage(userDto.getMarriage());
-        user.setOwner(userDto.getOwner());
-        user.setSoldier(userDto.getSoldier());
+        user.setOwner(userDto.getOwnerFlag());
+        user.setSoldier(userDto.getSoldierFlag());
         user.setAppointmentDate(userDto.getAppointmentDate());
 
         return userRepository.save(user);

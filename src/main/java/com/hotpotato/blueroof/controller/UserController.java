@@ -6,6 +6,7 @@ import com.hotpotato.blueroof.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +41,15 @@ public class UserController {
         return ResponseEntity.ok(userService.signup(userDto));
     }
 
+    // 회원 탈퇴 Controller
+    @ApiOperation(value = "회원 탈퇴")
+    @DeleteMapping("/withdraw")
+    public ResponseEntity withdraw() {
+        User user = userService.getMyInfo();
+        userService.withdraw(user);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     // 아이디 중복 확인 controller (존재하면 true)
     @ApiOperation(value = "아이디 중복 확인")
     @GetMapping("/check/{loginId}")
@@ -49,21 +59,21 @@ public class UserController {
 
     // SpringContext 에서 유저 정보 조회
     @ApiOperation(value = "유저 정보 조회 - SpringContext 내")
-    @GetMapping("/myInfo")
+    @GetMapping("/")
     public ResponseEntity<User> getMyUserInfo() {
         return ResponseEntity.ok(userService.getMyInfo());
     }
 
     // 로그인 아이디로 유저 정보 조회
     @ApiOperation(value = "유저 정보 조회 - 로그인 아이디")
-    @GetMapping("/userInfo/{loginId}")
+    @GetMapping("/{loginId}")
     public ResponseEntity<User> getUserInfo(@PathVariable String loginId) {
         return ResponseEntity.ok(userService.getUserInfo(loginId));
     }
 
     // 회원 정보 수정
     @ApiOperation(value = "회원 정보 수정")
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<Object> update(@Valid @RequestBody UserDto userDto) {
         User user = userService.getMyInfo();
         return ResponseEntity.ok(userService.update(user, userDto));

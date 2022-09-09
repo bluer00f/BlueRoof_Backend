@@ -30,7 +30,7 @@ public class ResultController {
 
     // 자격 진단
     @ApiOperation(value = "자격 진단")
-    @PostMapping("/result")
+    @PostMapping("")
     public ResponseEntity<? extends ResponseDto> createResult(@Valid @RequestBody ResultRequestDto resultDto) {
         User user = userService.getMyInfo();
 

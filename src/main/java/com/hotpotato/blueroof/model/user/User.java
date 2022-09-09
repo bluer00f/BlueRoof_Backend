@@ -50,7 +50,7 @@ public class User extends Timestamped {
     private String zipcode;
 
     // 혼인여부
-    @Column(name = "marriage_fl", nullable = false)
+    @Column(name = "marriage_fl")
     @Enumerated(EnumType.STRING)
     private Flag marriage;
 

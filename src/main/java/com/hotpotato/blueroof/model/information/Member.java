@@ -27,6 +27,10 @@ public class Member {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    // 이름
+    @Column(name = "member_name", nullable = false)
+    private String memberName;
+
     // 생년월일
     @Column(name = "member_birthday", nullable = false)
     private LocalDate memberBirthday;
@@ -52,7 +56,7 @@ public class Member {
 
     // 연간 소득
     @Column(name = "year_income")
-    private double yearIncome;
+    private int yearIncome;
 
     // 무주택 여부
     @Column(name = "house_fl")

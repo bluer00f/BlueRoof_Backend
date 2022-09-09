@@ -46,11 +46,9 @@ public class UserDto {
 
     private String zipcode;
 
-    private Flag marriage;
+    private Flag ownerFlag;
 
-    private Flag owner;
-
-    private Flag soldier;
+    private Flag soldierFlag;
 
     private LocalDate appointmentDate;
 
@@ -65,9 +63,9 @@ public class UserDto {
                 .phone(phone)
                 .address(address)
                 .zipcode(zipcode)
-                .marriage(marriage)
-                .owner(owner)
-                .soldier(soldier)
+                .marriage(Flag.N)
+                .owner(ownerFlag)
+                .soldier(soldierFlag)
                 .appointmentDate(appointmentDate)
                 .authority(Authority.ROLE_USER)
                 .build();

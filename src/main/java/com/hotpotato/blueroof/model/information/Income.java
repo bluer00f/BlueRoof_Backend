@@ -22,7 +22,7 @@ public class Income extends Timestamped {
     @Column(name = "income_id")
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
