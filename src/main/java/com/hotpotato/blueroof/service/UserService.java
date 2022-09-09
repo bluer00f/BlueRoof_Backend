@@ -94,25 +94,18 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // 회원탈퇴
-    @Transactional
-    public void withdraw(User user) {
-
-        userRepository.delete(user);
-
-    }
-
     // 유저 로그인 아이디 중복 체크
     @Transactional(readOnly = true)
     public boolean checkIdDuplication(String loginId) {
         return userRepository.existsByLoginId(loginId);
     }
 
-    // 현재 SecurityContext 에 있는 유저 정보 조회
-    @Transactional(readOnly = true)
-    public User getMyInfo() {
-        return userRepository.findByLoginId(SecurityUtil.getCurrentUsername())
-                .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
+    // 회원탈퇴
+    @Transactional
+    public void withdraw(User user) {
+
+        userRepository.delete(user);
+
     }
 
     // 회원 정보 수정
@@ -129,6 +122,13 @@ public class UserService {
         user.setAppointmentDate(userDto.getAppointmentDate());
 
         return userRepository.save(user);
+    }
+
+    // 현재 SecurityContext 에 있는 유저 정보 조회
+    @Transactional(readOnly = true)
+    public User getMyInfo() {
+        return userRepository.findByLoginId(SecurityUtil.getCurrentUsername())
+                .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
     }
 
     // 로그인 아이디로 유저 정보 조회
