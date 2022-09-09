@@ -45,7 +45,7 @@ public class Point {
     private int otherPoint;
 
     // 기타 가점 내역
-    @Column(name = "other_content", length=50)
+    @Column(name = "other_content", length = 50)
     private String otherContent;
 
 }
