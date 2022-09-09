@@ -1,6 +1,7 @@
 package com.hotpotato.blueroof.model.information;
 
 import com.hotpotato.blueroof.model.Timestamped;
+import com.hotpotato.blueroof.model.type.CarType;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,7 +29,8 @@ public class Car extends Timestamped {
 
     // 차량 기종
     @Column(name = "car_type", nullable = false)
-    private String carType;
+    @Enumerated(EnumType.STRING)
+    private CarType carType;
 
     // 차량 년도
     @Column(name = "car_year", nullable = false)

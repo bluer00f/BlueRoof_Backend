@@ -22,13 +22,13 @@ public class Spouse {
     @Column(name = "spouse_id")
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     // 이름
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "spouse_name", nullable = false)
+    private String spouseName;
 
     // 외국인 여부
     @Column(name = "foreign_fl", nullable = false)
@@ -52,13 +52,17 @@ public class Spouse {
     @Column(name = "win_date")
     private LocalDate winDate;
 
+    // 월 평균 소득
+    @Column(name = "spouse_income")
+    private int spouseIncome;
+
     // 분리 세대 여부
     @Column(name = "separate_fl", nullable = false)
     @Enumerated(EnumType.STRING)
     private Flag separate;
 
     // 분리 세대 아닌 경우, 주소
-    @Column(name = "spouse_address", nullable = false)
+    @Column(name = "spouse_address")
     private String spouseAddress;
 
     // 분리 세대 아닌 경우, 세대주 여부

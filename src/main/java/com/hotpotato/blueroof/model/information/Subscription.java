@@ -1,6 +1,7 @@
 package com.hotpotato.blueroof.model.information;
 
 import com.hotpotato.blueroof.model.Timestamped;
+import com.hotpotato.blueroof.model.type.Flag;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,18 +41,23 @@ public class Subscription extends Timestamped {
 
     // 2년내 당첨 이력
     @Column(name = "win_fl", nullable = false)
-    private int win;
+    @Enumerated(EnumType.STRING)
+    private Flag win;
 
     // 당첨 일자
     @Column(name = "win_date")
     private LocalDate winDate;
 
     // 당첨 지역
-    @Column(name = "region", length = 50)
-    private String region;
+    @Column(name = "win_region", length = 50)
+    private String winRegion;
+
+    // 당첨 우편 번호
+    @Column(name = "win_zipcode")
+    private String winZipcode;
 
     // 당첨 아파트명
     @Column(name = "win_name", length = 50)
-    private String win_name;
+    private String winName;
 
 }
