@@ -1,13 +1,14 @@
 package com.hotpotato.blueroof.repository;
 
-import com.hotpotato.blueroof.model.information.Spouse;
+import com.hotpotato.blueroof.model.information.Baby;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SpouseRepository extends JpaRepository<Spouse, Long> {
+public interface BabyRepository extends JpaRepository<Baby, Long> {
 
-    Spouse findByUserId(Long id);
+
+    Baby findByUserId(Long id);
 
     void deleteByUserId(Long id);
 }

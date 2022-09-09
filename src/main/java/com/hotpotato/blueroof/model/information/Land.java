@@ -2,6 +2,7 @@ package com.hotpotato.blueroof.model.information;
 
 
 import com.hotpotato.blueroof.model.Timestamped;
+import com.hotpotato.blueroof.model.type.LandType;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +27,11 @@ public class Land extends Timestamped {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    // 토지 유형
+    @Column(name = "land_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private LandType landType;
 
     // 토지 우편번호
     @Column(name = "land_zipcode", nullable = false)

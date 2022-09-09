@@ -1,0 +1,19 @@
+package com.hotpotato.blueroof.dto;
+
+import com.hotpotato.blueroof.model.type.Flag;
+import lombok.*;
+
+import java.util.List;
+
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AllMemberDto {
+    private List<MemberDto> memberDtoList;
+
+    private Flag pregnantFlag;
+
+    private int babyCount;
+}
