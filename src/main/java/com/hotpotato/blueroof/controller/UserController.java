@@ -41,6 +41,14 @@ public class UserController {
         return ResponseEntity.ok(userService.signup(userDto));
     }
 
+    // 회원 정보 수정
+    @ApiOperation(value = "회원 정보 수정")
+    @PutMapping("/update")
+    public ResponseEntity<Object> update(@Valid @RequestBody UserDto userDto) {
+        User user = userService.getMyInfo();
+        return ResponseEntity.ok(userService.update(user, userDto));
+    }
+
     // 회원 탈퇴 Controller
     @ApiOperation(value = "회원 탈퇴")
     @DeleteMapping("/withdraw")
@@ -69,14 +77,6 @@ public class UserController {
     @GetMapping("/{loginId}")
     public ResponseEntity<User> getUserInfo(@PathVariable String loginId) {
         return ResponseEntity.ok(userService.getUserInfo(loginId));
-    }
-
-    // 회원 정보 수정
-    @ApiOperation(value = "회원 정보 수정")
-    @PutMapping("/update")
-    public ResponseEntity<Object> update(@Valid @RequestBody UserDto userDto) {
-        User user = userService.getMyInfo();
-        return ResponseEntity.ok(userService.update(user, userDto));
     }
 
     // 혼인 여부 조회
