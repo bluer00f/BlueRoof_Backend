@@ -53,7 +53,7 @@ public class BankBook {
     private int totalPrice;
 
     // 납입 횟수
-    @Column(name = "total_count")
+    @Column(name = "total_count", nullable = false)
     private int totalCount;
 
 }
