@@ -1,4 +1,4 @@
-package test.hotpotato.blueroof_test.controller;
+package com.hotpotato.blueroof.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

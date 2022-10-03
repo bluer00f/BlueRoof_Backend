@@ -1,4 +1,4 @@
-package test.hotpotato.blueroof_test.controller;
+package com.hotpotato.blueroof.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import test.hotpotato.blueroof_test.model.user.User;
+import com.hotpotato.blueroof.model.user.User;
 
 @RequiredArgsConstructor
 @RestController

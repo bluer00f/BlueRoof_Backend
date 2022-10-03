@@ -1,4 +1,4 @@
-package test.hotpotato.blueroof_test.jwt;
+package com.hotpotato.blueroof.jwt;
 
 
 import lombok.RequiredArgsConstructor;

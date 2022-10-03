@@ -1,4 +1,4 @@
-package test.hotpotato.blueroof_test.model.appointment;
+package com.hotpotato.blueroof.model.appointment;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package test.hotpotato.blueroof_test.repository;
+package com.hotpotato.blueroof.repository;
 
 import java.util.Map;
 

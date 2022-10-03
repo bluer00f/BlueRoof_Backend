@@ -244,7 +244,7 @@ public class ResultService {
 
     // 가점 계산
     @Transactional
-    public Point point(User user, ResultRequestDto resultDto) {
+    public Point point(User user, ResultRequestDto resultDto, Long id) {
 
         return null;
     }

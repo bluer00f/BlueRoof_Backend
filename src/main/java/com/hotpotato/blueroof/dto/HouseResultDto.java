@@ -1,4 +1,4 @@
-package test.hotpotato.blueroof_test.dto;
+package com.hotpotato.blueroof.dto;
 
 import lombok.Getter;
 import lombok.Setter;
