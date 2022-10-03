@@ -48,16 +48,7 @@ public class Subscription extends Timestamped {
     @Column(name = "win_date")
     private LocalDate winDate;
 
-    // 당첨 지역
-    @Column(name = "win_region", length = 50)
-    private String winRegion;
-
-    // 당첨 우편 번호
-    @Column(name = "win_zipcode")
-    private String winZipcode;
-
-    // 당첨 아파트명
-    @Column(name = "win_name", length = 50)
-    private String winName;
-
+    //현 주소 거주 시작일
+    @Column(name = "now_house_start_date")
+    private LocalDate nowHouseStartDate;
 }

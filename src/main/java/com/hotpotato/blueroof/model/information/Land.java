@@ -2,7 +2,6 @@ package com.hotpotato.blueroof.model.information;
 
 
 import com.hotpotato.blueroof.model.Timestamped;
-import com.hotpotato.blueroof.model.type.LandType;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -28,11 +28,6 @@ public class Land extends Timestamped {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // 토지 유형
-    @Column(name = "land_type", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private LandType landType;
-
     // 토지 우편번호
     @Column(name = "land_zipcode", nullable = false)
     private String landZipcode;
@@ -48,5 +43,9 @@ public class Land extends Timestamped {
     // 토지 금액
     @Column(name = "land_price", nullable = false)
     private int landPrice;
+
+    // 토지 취득일
+    @Column(name = "land_date")
+    private LocalDate landDate;
 
 }

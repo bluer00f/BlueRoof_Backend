@@ -1,7 +1,8 @@
 package com.hotpotato.blueroof.dto;
 
-import com.hotpotato.blueroof.model.type.LandType;
 import lombok.*;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -10,8 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 public class LandDto {
 
-    private LandType landType;
-
     private String landZipcode;
 
     private String landAddress;
@@ -19,4 +18,6 @@ public class LandDto {
     private double landArea;
 
     private int landPrice;
+
+    private LocalDate landDate;
 }

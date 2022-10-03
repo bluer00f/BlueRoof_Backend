@@ -21,11 +21,7 @@ public class SubscriptionDto {
 
     private LocalDate winDate;
 
-    private String winRegion;
-
-    private String winZipcode;
-
-    private String winName;
+    private LocalDate nowHouseStartDate;
 
     private List<BankBookDto> bankBookList;
 

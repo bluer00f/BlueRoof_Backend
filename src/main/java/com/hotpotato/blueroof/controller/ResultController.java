@@ -38,7 +38,7 @@ public class ResultController {
         Point point = resultService.point(user, resultDto);
 
         // 적격 & 부적격 판단
-        Audit audit = resultService.audit(user, resultDto, point.getId());
+        Audit audit = resultService.audit(user, resultDto);
 
         ResultResponseDto resultResponseDto = new ResultResponseDto(resultDto.getSupplyType1(), resultDto.getSupplyType2(),
                 resultDto.getHouseType(), audit.getIneligible().toString(), audit.getIneligibleReason(), point.getSubPoint());
