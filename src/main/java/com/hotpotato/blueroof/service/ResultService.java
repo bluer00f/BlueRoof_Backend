@@ -33,7 +33,7 @@ public class ResultService {
 
     // 적격 & 부적격 판단
     @Transactional
-    public Audit audit(User user, ResultRequestDto resultDto, Long pointId) {
+    public Audit audit(User user, ResultRequestDto resultDto) {
 
         Flag eligible = Flag.Y;
         String reason = "";
@@ -79,43 +79,38 @@ public class ResultService {
             }
         }
 
-        // 수도권 등 규제지역(투기과열지구, 조정 대상 지역)에서 세대주 여부
-        if (user.getOwner().equals(Flag.N)) {
-            eligible = Flag.N;
-            if (!reason.equals("")) reason += " ";
-            reason += "신청 대상자가 세대주가 아님";
-        } else {
-            if (user.getOwner().equals(Flag.N)) {
-                if (aptInfo.getSpecltRdnEarthAt().equals(Flag.Y) || aptInfo.getMdatTrgetAreaSecd().equals(Flag.Y))
-                    eligible = Flag.N;
-                if (!reason.equals("")) reason += " ";
-                reason += "수도권 등 규제지역(투기과열지구, 조정 대상 지역)에서 세대주가 아님";
-            }
-        }
-
-        // 세대원의 청약 당첨 이력을 파악하여 5년 이내 이력이 존재 여부
         Subscription subscription = subscriptionRepository.findByUserId(user.getId());
         Spouse spouse = spouseRepository.findByUserId(user.getId());
         List<Member> members = memberRepository.findAllByUserId(user.getId());
-        Period userPeriod = Period.between(subscription.getWinDate(), LocalDate.now());
-        Period spousePeriod = Period.between(spouse.getWinDate(), LocalDate.now());
-        if (subscription.getWinDate() != null && userPeriod.getYears() <= 5) {
-            eligible = Flag.N;
-            if (!reason.equals("")) reason += " ";
-            reason += "본인의 5년 이내 청약 당첨 이력 존재";
-        } else if (spouse.getWinDate() != null && spousePeriod.getYears() <= 5) {
-            eligible = Flag.N;
-            if (!reason.equals("")) reason += " ";
-            reason += "배우자의 5년 이내 청약 당첨 이력 존재";
-        }
 
-        for (Member member : members) {
-            Period memberPeriod = Period.between(member.getWinDate(), LocalDate.now());
-            if (member.getWinDate() != null && memberPeriod.getYears() <= 5) {
+        // 수도권 등 규제지역(투기과열지구, 조정 대상 지역)에서 세대주 여부
+        if (aptInfo.getSpecltRdnEarthAt().equals(Flag.Y) || aptInfo.getMdatTrgetAreaSecd().equals(Flag.Y)) {
+            if (user.getOwner().equals(Flag.N)) {
                 eligible = Flag.N;
                 if (!reason.equals("")) reason += " ";
-                reason += "본인 & 배우자 외 세대원의 5년 이내 청약 당첨 이력 존재";
-                break;
+                reason += "수도권 등 규제지역(투기과열지구, 조정 대상 지역)에서 세대주가 아님";
+            }
+            // 세대원의 청약 당첨 이력을 파악하여 5년 이내 이력이 존재 여부
+            Period userPeriod = Period.between(subscription.getWinDate(), LocalDate.now());
+            Period spousePeriod = Period.between(spouse.getWinDate(), LocalDate.now());
+            if (subscription.getWinDate() != null && userPeriod.getYears() <= 5) {
+                eligible = Flag.N;
+                if (!reason.equals("")) reason += " ";
+                reason += "본인의 5년 이내 청약 당첨 이력 존재";
+            } else if (spouse.getWinDate() != null && spousePeriod.getYears() <= 5) {
+                eligible = Flag.N;
+                if (!reason.equals("")) reason += " ";
+                reason += "배우자의 5년 이내 청약 당첨 이력 존재";
+            }
+
+            for (Member member : members) {
+                Period memberPeriod = Period.between(member.getWinDate(), LocalDate.now());
+                if (member.getWinDate() != null && memberPeriod.getYears() <= 5) {
+                    eligible = Flag.N;
+                    if (!reason.equals("")) reason += " ";
+                    reason += "본인 & 배우자 외 세대원의 5년 이내 청약 당첨 이력 존재";
+                    break;
+                }
             }
         }
 
@@ -126,22 +121,27 @@ public class ResultService {
             Period bankBookPeriod = Period.between(bankBook.getBankBookDate(), LocalDate.now());
             if (aptInfo.getMdatTrgetAreaSecd().equals("Y")) {
                 if (bankBookPeriod.getYears() >= 2) {
-                    account = "적격";
-                    break;
+                    if (aptInfo.getHouseDtlSecdNm().equals("민영") || bankBook.getTotalCount() >= 24) {
+                        account = "적격";
+                        break;
+                    }
                 }
             } else if (aptInfo.getMdatTrgetAreaSecd().equals("S")) {
                 if (bankBookPeriod.getMonths() >= 1) {
-                    account = "적격";
-                    break;
+                    if (aptInfo.getHouseDtlSecdNm().equals("민영") || bankBook.getTotalCount() >= 1) {
+                        account = "적격";
+                        break;
+                    }
                 }
             } else {
-                if (aptInfo.getSubscrptAreaCodeNm().equals("서울") || aptInfo.getSubscrptAreaCodeNm().equals("인천") || aptInfo.getSubscrptAreaCodeNm().equals("경기")) {
-                    if (bankBookPeriod.getYears() >= 1) {
+                if (aptInfo.getSubscrptAreaCodeNm().equals("서울") || aptInfo.getSubscrptAreaCodeNm().equals("인천")
+                        || aptInfo.getSubscrptAreaCodeNm().equals("경기")) {
+                    if (aptInfo.getHouseDtlSecdNm().equals("민영") || bankBook.getTotalCount() >= 12) {
                         account = "적격";
                         break;
                     }
                 } else {
-                    if (bankBookPeriod.getMonths() >= 6) {
+                    if (aptInfo.getHouseDtlSecdNm().equals("민영") || bankBook.getTotalCount() >= 6) {
                         account = "적격";
                         break;
                     }
@@ -155,9 +155,30 @@ public class ResultService {
             reason += "청약 통장 가입 기간 미충족";
         }
 
+        // 거주 기간 충족 여부
+        Period livePeriod = Period.between(subscription.getNowHouseStartDate(), LocalDate.now());
+        if (!reason.contains("분양 정보의 인근 지역과 거주지 인근 지역 다름")) {
+            if (aptInfo.getMdatTrgetAreaSecd().equals("Y")) {
+                if (aptInfo.getHouseDtlSecdNm().equals("민영")) {
+                    if (livePeriod.getYears() < 2) {
+                        eligible = Flag.N;
+                        if (!reason.equals("")) reason += " ";
+                        reason += "인근 지역 거주 기간 미충족";
+                    }
+                } else {
+                    if (livePeriod.getYears() < 1) {
+                        eligible = Flag.N;
+                        if (!reason.equals("")) reason += " ";
+                        reason += "인근 지역 거주 기간 미충족";
+                    }
+                }
+            }
+        }
+
         // 가족의 주택 보유 여부
         // 회원 & 배우자
-        List<Building> buildingList = buildingRepository.findAllByUserIdAndHouseAndBuildingTypeNot(user.getId(), 0, "오피스텔");
+        List<Building> buildingList = buildingRepository.findAllByUserIdAndHouseAndBuildingTypeNot(user.getId(),
+                0, "오피스텔");
         String house = "부적격";
         if (!buildingList.isEmpty()) {
             house = "적격";
@@ -165,12 +186,16 @@ public class ResultService {
         // 무주택 인정 주택
         else if (buildingList.size() == 1) {
             Building building = buildingList.get(0);
-            if (aptInfo.getPublicHouseEarthAt().equals(Flag.Y) && building.getBuildingArea() <= 20) { // 20 제곱미터 이하인 경우 무주택 & 공공 분양
+            // 20 제곱미터 이하인 경우 무주택 & 공공 분양
+            if (aptInfo.getPublicHouseEarthAt().equals(Flag.Y) && building.getBuildingArea() <= 20) {
                 house = "적격";
-            } else if (resultDto.getSupplyType1().equals("APT 특별공급") && aptInfo.getNplnPrvoprPublicHouseAt().equals(Flag.Y) && building.getBuildingArea() <= 60) { // 60 제곱미터 이하 & 수도권 1.3억 / 기타 0.8억 이하인 경우 무주택 & 민영 주택
+            }
+            // 60 제곱미터 이하 & 수도권 1.3억 / 기타 0.8억 이하인 경우 무주택 & 민영 주택
+            else if (resultDto.getSupplyType1().equals("APT 특별공급")
+                    && aptInfo.getNplnPrvoprPublicHouseAt().equals(Flag.Y) && building.getBuildingArea() <= 60) {
                 String address = building.getBuildingAddress();
                 String[] city = address.split(" ");
-                if (city[0].equals("서울특별시") || city[0].equals("인천광역시") || city[0].equals("경기도")) {
+                if (city[0].contains("서울") || city[0].contains("인천") || city[0].contains("경기")) {
                     if (building.getBuildingPrice() <= 1.3) {
                         house = "적격";
                     }
@@ -180,9 +205,7 @@ public class ResultService {
                     }
                 }
             }
-
         }
-
         for (Building building : buildingList) { // 2018-12-11 이전 경우는 무주택
             LocalDate date = LocalDate.of(2018, 12, 11);
             if (building.getBuildingDate().isAfter(date)) {

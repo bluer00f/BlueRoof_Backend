@@ -100,6 +100,12 @@ public class UserService {
         return userRepository.existsByLoginId(loginId);
     }
 
+    // 유저 이메일 중복 체크
+    @Transactional(readOnly = true)
+    public boolean checkEmailDuplication(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
     // 회원탈퇴
     @Transactional
     public void withdraw(User user) {

@@ -60,9 +60,16 @@ public class UserController {
 
     // 아이디 중복 확인 controller (존재하면 true)
     @ApiOperation(value = "아이디 중복 확인")
-    @GetMapping("/check/{loginId}")
+    @GetMapping("/check/loginId/{loginId}")
     public ResponseEntity<Boolean> checkUserIdDuplicate(@PathVariable String loginId) {
         return ResponseEntity.ok(userService.checkIdDuplication(loginId));
+    }
+
+    // 이메일 중복 확인 Controller (존재하면 true)
+    @ApiOperation(value = "이메일 중복 확인")
+    @GetMapping("/check/email/{email}")
+    public ResponseEntity<Boolean> checkEmailDuplicate(@PathVariable String email) {
+        return ResponseEntity.ok(userService.checkEmailDuplication(email));
     }
 
     // SpringContext 에서 유저 정보 조회
@@ -82,8 +89,8 @@ public class UserController {
     // 혼인 여부 조회
     @ApiOperation(value = "혼인 여부 조회")
     @GetMapping("/marriage")
-    public ResponseEntity<? extends ResponseDto> getMarriage() {
+    public ResponseEntity<Boolean> getMarriage() {
         User user = userService.getMyInfo();
-        return ResponseEntity.ok().body(new CommonResponseDto<>(userService.getMarriage(user)));
+        return ResponseEntity.ok(userService.getMarriage(user));
     }
 }

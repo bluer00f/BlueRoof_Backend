@@ -19,10 +19,14 @@ import java.util.List;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final BabyRepository babyRepository;
+    private final SpouseService spouseService;
 
     // 세대 구성원(+태아) 정보 저장/수정/삭제
     @Transactional
     public AllMemberDto createAllMember(User user, AllMemberDto allMemberDto) {
+
+        // 배우자 정보 저장/수정/삭제
+        spouseService.createSpouse(user, allMemberDto.getSpouseDto());
 
         // 세대 구성원 정보 삭제 후 저장
         memberRepository.deleteAllByUserId(user.getId());
@@ -64,6 +68,12 @@ public class MemberService {
     @Transactional
     public AllMemberDto getAllMember(User user) {
 
+        // 배우자 정보 조회
+        SpouseDto spouseDto = spouseService.getSpouse(user);
+
+        AllMemberDto allMemberDto = AllMemberDto.builder()
+                .spouseDto(spouseDto).build();
+
         // 세대 구성원 정보 조회
         List<Member> memberList = memberRepository.findAllByUserId(user.getId());
         List<MemberDto> memberDtoList = new ArrayList<>();
@@ -82,7 +92,6 @@ public class MemberService {
             memberDtoList.add(memberDto);
         }
 
-        AllMemberDto allMemberDto = AllMemberDto.builder().pregnantFlag(null).build();
         if (!memberDtoList.isEmpty()) {
             allMemberDto.setMemberDtoList(memberDtoList);
         }

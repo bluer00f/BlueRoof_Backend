@@ -42,9 +42,7 @@ public class SubscriptionService {
                     .generalRank(subscriptionDto.getGeneralRank())
                     .win(subscriptionDto.getWinFlag())
                     .winDate(subscriptionDto.getWinDate())
-                    .winRegion(subscriptionDto.getWinRegion())
-                    .winZipcode(subscriptionDto.getWinZipcode())
-                    .winName(subscriptionDto.getWinName())
+                    .nowHouseStartDate(subscriptionDto.getNowHouseStartDate())
                     .build();
 
             subscriptionRepository.save(subscription);
@@ -58,8 +56,7 @@ public class SubscriptionService {
             subscription.setGeneralRank(subscriptionDto.getGeneralRank());
             subscription.setWin(subscriptionDto.getWinFlag());
             subscription.setWinDate(subscriptionDto.getWinDate());
-            subscription.setWinName(subscriptionDto.getWinName());
-            subscription.setWinZipcode(subscriptionDto.getWinZipcode());
+            subscription.setNowHouseStartDate(subscriptionDto.getNowHouseStartDate());
 
             subscriptionRepository.save(subscription);
 
@@ -71,6 +68,7 @@ public class SubscriptionService {
                     .user(user)
                     .bankBookType(bankBookDto.getBankBookType())
                     .bankBookDate(bankBookDto.getBankBookDate())
+                    .teen(bankBookDto.getTeenFlag())
                     .teenCount(bankBookDto.getTeenCount())
                     .teenPrice(bankBookDto.getTeenPrice())
                     .teenSumPrice(bankBookDto.getTeenSumPrice())
@@ -95,9 +93,7 @@ public class SubscriptionService {
             subscriptionDto.setGeneralRank(subscription.getGeneralRank());
             subscriptionDto.setWinFlag(subscription.getWin());
             subscriptionDto.setWinDate(subscription.getWinDate());
-            subscriptionDto.setWinRegion(subscription.getWinRegion());
-            subscriptionDto.setWinZipcode(subscription.getWinZipcode());
-            subscriptionDto.setWinName(subscription.getWinName());
+            subscriptionDto.setNowHouseStartDate(subscription.getNowHouseStartDate());
         }
 
         // 청약 통장 정보 조회
@@ -108,6 +104,7 @@ public class SubscriptionService {
             BankBookDto bankBookDto = BankBookDto.builder()
                     .bankBookType(bankBook.getBankBookType())
                     .bankBookDate(bankBook.getBankBookDate())
+                    .teenFlag(bankBook.getTeen())
                     .teenCount(bankBook.getTeenCount())
                     .teenPrice(bankBook.getTeenPrice())
                     .teenSumPrice(bankBook.getTeenSumPrice())

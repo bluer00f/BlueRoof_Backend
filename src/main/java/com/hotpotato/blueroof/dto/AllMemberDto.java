@@ -11,6 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AllMemberDto {
+
+    private SpouseDto spouseDto;
+
     private List<MemberDto> memberDtoList;
 
     private Flag pregnantFlag;
