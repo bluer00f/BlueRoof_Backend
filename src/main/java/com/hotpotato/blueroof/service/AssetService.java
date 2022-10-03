@@ -98,11 +98,11 @@ public class AssetService {
             for (LandDto landDto : assetDto.getLand()) {
                 Land land = Land.builder()
                         .user(user)
-                        .landType(landDto.getLandType())
                         .landZipcode(landDto.getLandZipcode())
                         .landAddress(landDto.getLandAddress())
                         .landArea(landDto.getLandArea())
                         .landPrice(landDto.getLandPrice())
+                        .landDate(landDto.getLandDate())
                         .build();
                 landRepository.save(land);
             }
@@ -166,11 +166,11 @@ public class AssetService {
             List<LandDto> landDtoList = new ArrayList<>();
             for (Land land : landList) {
                 LandDto landDto = LandDto.builder()
-                        .landType(land.getLandType())
                         .landZipcode(land.getLandZipcode())
                         .landAddress(land.getLandAddress())
                         .landArea(land.getLandArea())
-                        .landPrice(land.getLandPrice()).build();
+                        .landPrice(land.getLandPrice())
+                        .landDate(land.getLandDate()).build();
                 landDtoList.add(landDto);
             }
             assetDto.setLand(landDtoList);

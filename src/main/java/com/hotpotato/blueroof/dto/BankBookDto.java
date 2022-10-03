@@ -1,6 +1,7 @@
 package com.hotpotato.blueroof.dto;
 
 import com.hotpotato.blueroof.model.type.BankBookType;
+import com.hotpotato.blueroof.model.type.Flag;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -15,6 +16,8 @@ public class BankBookDto {
     private BankBookType bankBookType;
 
     private LocalDate bankBookDate;
+
+    private Flag teenFlag;
 
     private int teenCount;
 

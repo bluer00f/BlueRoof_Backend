@@ -1,6 +1,7 @@
 package com.hotpotato.blueroof.model.information;
 
 import com.hotpotato.blueroof.model.type.BankBookType;
+import com.hotpotato.blueroof.model.type.Flag;
 import com.hotpotato.blueroof.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,6 +36,10 @@ public class BankBook {
     // 가입 일자
     @Column(name = "bank_book_date")
     private LocalDate bankBookDate;
+
+    // 미성년 가입 여부
+    @Column(name = "teen_fl")
+    private Flag teen;
 
     // 미성년자 납입 횟수
     @Column(name = "teen_count")
