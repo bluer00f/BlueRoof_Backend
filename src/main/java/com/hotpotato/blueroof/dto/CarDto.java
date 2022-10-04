@@ -1,6 +1,6 @@
 package com.hotpotato.blueroof.dto;
 
-import com.hotpotato.blueroof.service.model.type.CarType;
+import com.hotpotato.blueroof.model.type.CarType;
 import lombok.*;
 
 

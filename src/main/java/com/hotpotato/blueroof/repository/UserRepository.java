@@ -1,6 +1,6 @@
 package com.hotpotato.blueroof.repository;
 
-import com.hotpotato.blueroof.service.model.user.User;
+import com.hotpotato.blueroof.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

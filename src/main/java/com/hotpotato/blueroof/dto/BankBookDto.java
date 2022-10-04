@@ -1,7 +1,7 @@
 package com.hotpotato.blueroof.dto;
 
-import com.hotpotato.blueroof.service.model.type.BankBookType;
-import com.hotpotato.blueroof.service.model.type.Flag;
+import com.hotpotato.blueroof.model.type.BankBookType;
+import com.hotpotato.blueroof.model.type.Flag;
 import lombok.*;
 
 import java.time.LocalDate;

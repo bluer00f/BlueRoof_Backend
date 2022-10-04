@@ -9,16 +9,11 @@ import com.hotpotato.blueroof.dto.CommonResponseDto;
 import com.hotpotato.blueroof.dto.ResponseDto;
 import com.hotpotato.blueroof.dto.ResultRequestDto;
 import com.hotpotato.blueroof.dto.ResultResponseDto;
-import com.hotpotato.blueroof.service.model.result.Audit;
-import com.hotpotato.blueroof.service.model.result.Point;
-import com.hotpotato.blueroof.service.model.user.User;
+import com.hotpotato.blueroof.model.result.Audit;
+import com.hotpotato.blueroof.model.result.Point;
+import com.hotpotato.blueroof.model.user.User;
 import com.hotpotato.blueroof.service.ResultService;
 import com.hotpotato.blueroof.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
