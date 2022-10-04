@@ -1,6 +1,6 @@
 package com.hotpotato.blueroof.dto;
 
-import com.hotpotato.blueroof.model.type.BuildingType;
+import com.hotpotato.blueroof.service.model.type.BuildingType;
 import lombok.*;
 
 import java.time.LocalDate;

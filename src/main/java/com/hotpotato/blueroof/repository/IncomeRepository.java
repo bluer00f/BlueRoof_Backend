@@ -1,6 +1,6 @@
 package com.hotpotato.blueroof.repository;
 
-import com.hotpotato.blueroof.model.information.Income;
+import com.hotpotato.blueroof.service.model.information.Income;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
