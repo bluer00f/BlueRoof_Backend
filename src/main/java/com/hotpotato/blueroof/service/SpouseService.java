@@ -1,9 +1,9 @@
 package com.hotpotato.blueroof.service;
 
 import com.hotpotato.blueroof.dto.SpouseDto;
-import com.hotpotato.blueroof.service.model.information.Spouse;
-import com.hotpotato.blueroof.service.model.type.Flag;
-import com.hotpotato.blueroof.service.model.user.User;
+import com.hotpotato.blueroof.model.information.Spouse;
+import com.hotpotato.blueroof.model.type.Flag;
+import com.hotpotato.blueroof.model.user.User;
 import com.hotpotato.blueroof.repository.SpouseRepository;
 import com.hotpotato.blueroof.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

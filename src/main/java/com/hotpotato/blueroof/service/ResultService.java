@@ -1,12 +1,12 @@
 package com.hotpotato.blueroof.service;
 
 import com.hotpotato.blueroof.dto.ResultRequestDto;
-import com.hotpotato.blueroof.service.model.appointment.AptInfo;
-import com.hotpotato.blueroof.service.model.information.*;
-import com.hotpotato.blueroof.service.model.result.Audit;
-import com.hotpotato.blueroof.service.model.result.Point;
-import com.hotpotato.blueroof.service.model.type.Flag;
-import com.hotpotato.blueroof.service.model.user.User;
+import com.hotpotato.blueroof.model.appointment.AptInfo;
+import com.hotpotato.blueroof.model.information.*;
+import com.hotpotato.blueroof.model.result.Audit;
+import com.hotpotato.blueroof.model.result.Point;
+import com.hotpotato.blueroof.model.type.Flag;
+import com.hotpotato.blueroof.model.user.User;
 import com.hotpotato.blueroof.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

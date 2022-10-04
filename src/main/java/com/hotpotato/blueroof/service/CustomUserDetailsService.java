@@ -1,6 +1,6 @@
 package com.hotpotato.blueroof.service;
 
-import com.hotpotato.blueroof.service.model.user.User;
+import com.hotpotato.blueroof.model.user.User;
 import com.hotpotato.blueroof.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
