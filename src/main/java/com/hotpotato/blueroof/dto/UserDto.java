@@ -1,9 +1,9 @@
 package com.hotpotato.blueroof.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.hotpotato.blueroof.model.type.Flag;
-import com.hotpotato.blueroof.model.user.Authority;
-import com.hotpotato.blueroof.model.user.User;
+import com.hotpotato.blueroof.service.model.type.Flag;
+import com.hotpotato.blueroof.service.model.user.Authority;
+import com.hotpotato.blueroof.service.model.user.User;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

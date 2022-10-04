@@ -1,7 +1,7 @@
 package com.hotpotato.blueroof.controller;
 
 import com.hotpotato.blueroof.dto.SubscriptionDto;
-import com.hotpotato.blueroof.model.user.User;
+import com.hotpotato.blueroof.service.model.user.User;
 import com.hotpotato.blueroof.service.SubscriptionService;
 import com.hotpotato.blueroof.service.UserService;
 import io.swagger.annotations.Api;

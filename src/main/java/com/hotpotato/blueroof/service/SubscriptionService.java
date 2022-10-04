@@ -2,9 +2,9 @@ package com.hotpotato.blueroof.service;
 
 import com.hotpotato.blueroof.dto.BankBookDto;
 import com.hotpotato.blueroof.dto.SubscriptionDto;
-import com.hotpotato.blueroof.model.information.BankBook;
-import com.hotpotato.blueroof.model.information.Subscription;
-import com.hotpotato.blueroof.model.user.User;
+import com.hotpotato.blueroof.service.model.information.BankBook;
+import com.hotpotato.blueroof.service.model.information.Subscription;
+import com.hotpotato.blueroof.service.model.user.User;
 import com.hotpotato.blueroof.repository.BankBookRepository;
 import com.hotpotato.blueroof.repository.SubscriptionRepository;
 import lombok.RequiredArgsConstructor;

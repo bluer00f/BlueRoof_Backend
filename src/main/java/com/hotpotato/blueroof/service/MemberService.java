@@ -1,10 +1,10 @@
 package com.hotpotato.blueroof.service;
 
 import com.hotpotato.blueroof.dto.*;
-import com.hotpotato.blueroof.model.information.Baby;
-import com.hotpotato.blueroof.model.information.Member;
-import com.hotpotato.blueroof.model.type.Flag;
-import com.hotpotato.blueroof.model.user.User;
+import com.hotpotato.blueroof.service.model.information.Baby;
+import com.hotpotato.blueroof.service.model.information.Member;
+import com.hotpotato.blueroof.service.model.type.Flag;
+import com.hotpotato.blueroof.service.model.user.User;
 import com.hotpotato.blueroof.repository.BabyRepository;
 import com.hotpotato.blueroof.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
